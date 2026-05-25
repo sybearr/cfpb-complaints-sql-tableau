@@ -11,9 +11,9 @@ Insights and recommendations are provided on the following key areas:
 * **Operational Responsiveness & Resolution Performance:** An assessment of corporate SLA compliance, evaluating timely response rates alongside the ultimate financial and non-monetary outcomes of disputes.
 * **Submission & Geographic Trends:** An evaluation of consumer engagement dynamics across digital and legacy intake channels, tracking spatial volume distribution and monthly macroeconomic surges.
 
-* The SQL queries used to inspect and clean the data for this analysis can be found here **[Link to Clean Queries]**.
-* Targeted SQL queries regarding various business questions can be found here **[Link to Analytical Queries]**.
-* An interactive Tableau dashboard used to report and explore complaint trends can be found here **[Link to Tableau Public Dashboard]**.
+* The SQL queries used to inspect and clean the data for this analysis can be found here **[https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/01_cleaning.sql]**.
+* Targeted SQL queries regarding various business questions can be found here **[https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/02_analysis.sql]**.
+* An interactive Tableau dashboard used to report and explore complaint trends can be found here **[https://public.tableau.com/views/CFPBFinancialConsumerComplaintsDashboard/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link]**.
 
 ---
 
@@ -38,7 +38,7 @@ Prior to building visualizations, the raw dataset underwent rigorous ETL inside 
 ### Overview of Findings
 Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily dominated by failures in credit reporting infrastructure, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate elite compliance with statutory response windows (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the largest operational and reputational risk vector in the retail consumer finance ecosystem.
 
-![CFPB Consumer Complaint Dashboard Screenshot](Screenshot%202026-05-25%20at%203.50.31 PM.jpg)
+<img width="1354" height="984" alt="Screenshot 2026-05-25 at 3 50 31 PM" src="https://github.com/user-attachments/assets/ed7b55ac-d08a-4c3d-a2f3-a4d963754ea4" />
 
 ---
 
