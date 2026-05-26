@@ -11,9 +11,9 @@ Insights and recommendations focus on four core areas:
 * **Operational Responsiveness & Resolution Performance:** Assessing corporate compliance with response deadlines alongside final dispute resolution types (such as monetary relief vs. simple explanations).
 * **Submission Channels & Volume Timing:** Analyzing how consumers submit complaints (web, phone, mail) and tracking monthly volume spikes over the fiscal year.
 
-* The SQL queries used to inspect and clean the data for this analysis can be found here **[https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/01_cleaning.sql]**.
-* Targeted SQL queries regarding various business questions can be found here **[https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/02_analysis.sql]**.
-* An interactive Tableau dashboard used to report and explore complaint trends can be found here **[https://public.tableau.com/views/CFPBFinancialConsumerComplaintsDashboard/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link]**.
+* The SQL queries used to inspect and clean the data for this analysis can be found [here](https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/01_cleaning.sql).
+* Targeted SQL queries regarding various business questions can be found [here](https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/02_analysis.sql).
+* An interactive Tableau dashboard used to report and explore complaint trends can be found [here](https://public.tableau.com/views/CFPBFinancialConsumerComplaintsDashboard/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 
 ---
 
