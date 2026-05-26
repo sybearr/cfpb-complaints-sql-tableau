@@ -5,11 +5,11 @@ The Consumer Financial Protection Bureau (CFPB) is a U.S. government agency that
 
 This project analyzes **951,695 consumer complaint records** spanning from May 2022 to April 2023. By evaluating how financial organizations manage disputes, this analysis provides actionable insights into industry-wide operational gaps, customer friction points, and regulatory compliance risks.
 
-Insights and recommendations are provided on the following key areas:
-* **Product & Issue Concentration:** Evaluation of systemic product friction points across the financial sector, focusing on volume drivers and primary consumer grievances like credit reporting inaccuracies.
-* **Bureau & Institutional Risk Mapping:** An analysis of organizational exposure, contrasting the massive compliance burdens of the "Big Three" credit bureaus against traditional retail banking leaders.
-* **Operational Responsiveness & Resolution Performance:** An assessment of corporate SLA compliance, evaluating timely response rates alongside the ultimate financial and non-monetary outcomes of disputes.
-* **Submission & Geographic Trends:** An evaluation of consumer engagement dynamics across digital and legacy intake channels, tracking spatial volume distribution and monthly macroeconomic surges.
+Insights and recommendations focus on four core areas:
+* **Product & Issue Concentration:** Identifying which financial products drive the most disputes and highlighting the specific flaws causing consumer friction.
+* **Institutional Risk Mapping:** Evaluating which financial firms and credit bureaus face the highest complaint volumes and regulatory exposure.
+* **Operational Responsiveness & Resolution Performance:** Assessing corporate compliance with response deadlines alongside final dispute resolution types (such as monetary relief vs. simple explanations).
+* **Submission Channels & Volume Timing:** Analyzing how consumers submit complaints (web, phone, mail) and tracking monthly volume spikes over the fiscal year.
 
 * The SQL queries used to inspect and clean the data for this analysis can be found here **[https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/01_cleaning.sql]**.
 * Targeted SQL queries regarding various business questions can be found here **[https://github.com/sybearr/cfpb-complaints-sql-tableau/blob/eefb69b3c74737fefabd174f743b6d67fcbc0a03/02_analysis.sql]**.
@@ -25,18 +25,18 @@ The dataset is hosted in a centralized PostgreSQL database containing **951,695 
 * **Resolution Performance:** Company response, Timely response (Y/N), Consumer disputed (Y/N), Submitted via
 
 ### Data Cleaning Workflow
-Prior to building visualizations, the raw dataset underwent rigorous ETL inside a **PostgreSQL 18** environment via pgAdmin:
+Prior to building visualizations, the raw dataset underwent data cleaning and transformation inside a **PostgreSQL 18** environment via pgAdmin:
 1. **Text Standardization:** Leveraged `INITCAP()` to standardize mixed casing across fields like `Product` and `Company`.
-2. **Missing Value Management:** Identified and handled missing text entries in `Sub-product` and `Sub-issue` via conditional logic.
-3. **Data Type Casts:** Handled manual date transformations to properly parse system timestamps into relational `DATE` fields.
-4. **Feature Engineering:** Generated calculated columns for `Complaint Year`, `Month`, and `Quarter` using window and date functions to power time-series trends in Tableau.
+3. **Missing Value Management:** Looked for missing or null values, none found.
+4. **Data Type Casts:** Handled manual date transformations to properly parse system timestamps into relational `DATE` fields.
+5. **Feature Engineering:** Generated calculated columns for `Complaint Year`, `Month`, and `Quarter` using window and date functions to power time-series trends in Tableau.
 
 ---
 
 ## Executive Summary
 
 ### Overview of Findings
-Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily dominated by failures in credit reporting infrastructure, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate elite compliance with statutory response windows (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the largest operational and reputational risk vector in the retail consumer finance ecosystem.
+Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily dominated by failures in credit reporting infrastructure, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate strong compliance with response deadlines (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the the biggest operational risk area in the retail consumer finance ecosystem.
 
 <img width="1354" height="984" alt="Screenshot 2026-05-25 at 3 50 31 PM" src="https://github.com/user-attachments/assets/ed7b55ac-d08a-4c3d-a2f3-a4d963754ea4" />
 
@@ -45,36 +45,31 @@ Over the 12-month period analyzed, consumer complaints reached a massive volume 
 ## Insights Deep Dive
 
 ### Product & Issue Concentration
-* **Credit Reporting Dominance:** Credit reporting is the clear epicenter of consumer friction, making up **78% of all complaints (743,583 total records)**. Far behind in second and third place are Debt Collection (59,882) and Credit Cards (43,821).
-* **Data Integrity Failures:** The single largest industry-wide pain point is the **"Improper use of your report"**, capturing **288,701 complaints**, closely followed by "Incorrect information on your report" at **262,902 complaints**. Together, these two data-quality issues account for more than half of the entire database.
+* **Credit Reporting Dominance:** Credit reporting is the single largest driver of consumer disputes, accounting for **78% of all complaints (743,583 records)**. Debt collection follows at a distant second (59,882), with credit cards ranking third (43,821).
+* **Data Accuracy Failures:** The top consumer grievance is the **"Improper use of your report"** (288,701 complaints), followed closely by "Incorrect information on your report" (262,902 complaints). Together, these two data-quality issues account for over half of the entire database.
 
-### Bureau & Institutional Risk Mapping
-* **The Big Three Exposure:** The credit reporting giants—**Equifax, TransUnion, and Experian**—shoulder the vast majority of consumer backlash, combining for **71.6% of total market complaints**. Equifax leads with 233,420 complaints, followed closely by TransUnion (228,713) and Experian (219,377).
-* **Banking Sector Outliers:** Outside of the credit bureaus, traditional retail banks see substantially lower but highly concentrated volume. **Wells Fargo (17,907)**, **Capital One (14,474)**, and **Bank of America (13,533)** represent the most heavily complained-about traditional banking institutions, mostly driven by credit card and checking/savings disputes.
+### Institutional Risk Mapping
+* **Credit Bureau Exposure:** The "Big Three" credit reporting agencies—**Equifax, TransUnion, and Experian**—shoulder the vast majority of consumer complaints, combining for **71.6% of total complaints**. Equifax leads with 233,420 records, followed by TransUnion (228,713) and Experian (219,377).
+* **Retail Banking Exposure:** Outside of the credit bureaus, traditional commercial banks see much lower but highly concentrated volumes. **Wells Fargo (17,907)**, **Capital One (14,474)**, and **Bank of America (13,533)** are the most complained-about banking institutions, primarily driven by credit card and checking account disputes.
 
 ### Operational Responsiveness & Resolution Performance
-* **High Regulatory Compliance:** Financial institutions maintain an exceptional **99.5% timely response rate**. This indicates robust automated compliance workflows and a strict adherence to legal SLA windows across major players.
-* **Explanation Over Compensation:** While the **overall resolution rate sits at 99.9% closed**, the nature of these closures leans heavily away from financial adjustments. **64.6% of complaints are closed with an explanation**, 33.5% result in non-monetary relief, and only **1.9% result in direct monetary relief** to the consumer.
+* **Strong SLA Compliance:** Financial institutions maintain a **99.5% timely response rate**. This demonstrates that corporate automated workflows are highly effective at meeting regulatory deadlines.
+* **Explanation vs. Relief:** While **99.9% of complaints are successfully closed**, financial restitution is rare. **64.6% of complaints are closed with an explanation**, 33.5% receive non-monetary relief, and only **1.9% result in direct monetary relief** (refunds or compensation).
 
-### Submission & Geographic Trends
-* **Digital-First Engagement:** A staggering **95.7% of all consumer complaints are routed through the Web**, with only 4.3% utilizing legacy channels like Email, Phone, or Postal Mail. Digital submission pathways act as the main pipeline for intake.
-* **Volatilities and Surges:** Macroeconomic shifts and potential data security incidents drove a significant volume spike in **March 2023, peaking at 89,900 complaints**, marking the highest volume month within the dataset. Geographically, complaints scale relative to state population sizes, with California, Texas, and Florida anchoring the highest volumes.
+### Submission Channels & Volume Timing
+* **Digital-First Preferences:** A dominant **95.7% of all consumer complaints are submitted via the Web**, with legacy channels like phone, email, and postal mail handling the remaining 4.3%. 
+* **Volume Surges:** Complaint volume peaked significantly in **March 2023, reaching 89,900 complaints** for the month. Geographically, dispute volumes scale with state population density, with California, Texas, and Florida anchoring the highest activity.
 
 ---
 
 ## Recommendations
 
-Based on the insights and findings above, a risk management and retail banking team should consider the following strategic actions:
+Based on these analytical findings, a retail banking risk or compliance team should prioritize the following actions:
 
-* **Audit Third-Party Credit Bureau Integrations:** Because credit reporting discrepancies comprise 78% of market disputes, retail banking arms must conduct frequent data-integrity audits on data payloads transmitted to Equifax, TransUnion, and Experian to minimize downstream regulatory penalties and dispute handling costs.
-* **Optimize Self-Service Resolution for Digital Channels:** Since 95.7% of consumers utilize web-based platforms to register complaints, migrating standard dispute forms directly into the internal mobile banking application could intercept grievances *before* they escalate to the federal CFPB database.
-* **Refine Dispute Categorization Routing:** Given that "Improper use of report" and "Incorrect information" dominate systemic issues, pre-sorting complaints using automated NLP (Natural Language Processing) tools could significantly reduce internal processing times for operational risk teams.
-* **Review Root Causes of Checking & Savings Disputes:** While traditional retail banking complaints are low compared to credit bureaus, institutions like Wells Fargo and Capital One face continuous friction. Digging deeper into checking/savings account management could reveal policies triggering high volumes of complaints.
+* **Audit Third-Party Credit Bureau Integrations:** Since credit reporting errors drive 78% of all disputes, banks must frequently audit the customer data pipelines sent to Equifax, TransUnion, and Experian to catch inaccuracies before they turn into formal regulatory complaints.
+* **Optimize Digital Self-Service Dispute Portals:** With 95.7% of consumers preferring online channels, banks should introduce guided dispute tools directly inside their mobile banking applications. Intercepting customer issues early prevents escalation to the CFPB database.
+* **Implement Automated Case Routing:** Because "improper use of report" and "incorrect information" dominate customer issues, text-tagging automation can help operational teams route these high-volume complaints to specialized resolution units faster.
+* **Investigate Retail Banking Friction Points:** Traditional retail banking components face persistent complaints regarding checking and savings accounts. Risk teams should audit account terms, fee disclosures, and hold policies to identify and resolve recurring consumer triggers.
 
 ---
 
-## Assumptions and Caveats
-
-* **Assumption 1:** Unpopulated or blank sub-product fields were assumed to mean that the consumer did not select a sub-tier category during digital submission; these were recoded as "Not Specified" rather than dropping the primary product records.
-* **Assumption 2:** The "Timely Response" flag is determined by the company's compliance with standard CFPB administrative timelines (usually 15 days); this analysis assumes the accuracy of the CFPB's internal system timestamp evaluations.
-* **Assumption 3:** Financial values or specific losses suffered by consumers are not fully quantified in the public database, limiting this analysis to volume and classification trends rather than exact dollar-amount risk exposures.
