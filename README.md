@@ -71,5 +71,5 @@ Based on these analytical findings, a retail banking risk or compliance team sho
 * **Implement Automated Case Routing:** Because "improper use of report" and "incorrect information" dominate customer issues, text-tagging automation can help operational teams route these high-volume complaints to specialized resolution units faster.
 * **Investigate Retail Banking Friction Points:** Traditional retail banking components face persistent complaints regarding checking and savings accounts. Risk teams should audit account terms, fee disclosures, and hold policies to identify and resolve recurring consumer triggers.
 
----
+
 
