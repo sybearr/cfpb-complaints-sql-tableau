@@ -27,16 +27,16 @@ The dataset is hosted in a centralized PostgreSQL database containing **951,695 
 ### Data Cleaning Workflow
 Prior to building visualizations, the raw dataset underwent data cleaning and transformation inside a **PostgreSQL 18** environment via pgAdmin:
 1. **Text Standardization:** Leveraged `INITCAP()` to standardize mixed casing across fields like `Product` and `Company`.
-3. **Missing Value Management:** Looked for missing or null values, none found.
-4. **Data Type Casts:** Handled manual date transformations to properly parse system timestamps into relational `DATE` fields.
-5. **Feature Engineering:** Generated calculated columns for `Complaint Year`, `Month`, and `Quarter` using window and date functions to power time-series trends in Tableau.
+2. **Date Format Inconsistencies:** The raw dataset contained two incompatible date formats. The data was split in Excel into two groups, imported separately into PostgreSQL, corrected using MAKE_DATE(), then recombined with UNION ALL and removed any duplicate ids.
+3. **Data Type Casts:** Handled manual date transformations to properly parse system timestamps into relational `DATE` fields.
+4. **Feature Engineering:** Generated calculated columns for `Complaint Year`, `Month`, and `Quarter` using window and date functions to power time-series trends in Tableau.
 
 ---
 
 ## Executive Summary
 
 ### Overview of Findings
-Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily dominated by failures in credit reporting infrastructure, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate strong compliance with response deadlines (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the the biggest operational risk area in the retail consumer finance ecosystem.
+Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily concentrated in credit reporting complaints, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate strong compliance with response deadlines (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the the biggest operational risk area in the retail consumer finance ecosystem.
 
 <img width="1354" height="984" alt="Screenshot 2026-05-25 at 3 50 31 PM" src="https://github.com/user-attachments/assets/ed7b55ac-d08a-4c3d-a2f3-a4d963754ea4" />
 
