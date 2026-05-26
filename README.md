@@ -18,7 +18,7 @@ Insights and recommendations focus on four core areas:
 ---
 
 ## Data Structure & Initial Checks
-The dataset is hosted in a centralized PostgreSQL database containing **951,695 records** across a single comprehensive staging table representing the CFPB Public Complaints registry. Key attributes inspected include:
+The dataset is obtained from [https://www.consumerfinance.gov/data-research/consumer-complaints/#get-the-data] and filtered from May 1, 2022 to May 1, 2023. It contains **951,695 records** across a single comprehensive staging table representing the CFPB Public Complaints registry. Key attributes inspected include:
 * **Temporal Fields:** Date received, Date sent to company (used to evaluate corporate response speed)
 * **Categorical Categorizations:** Product, Sub-product, Issue, Sub-issue
 * **Corporate Entities:** Company name, State, Zip Code
