@@ -24,6 +24,9 @@ The dataset is hosted in a centralized PostgreSQL database containing **951,695 
 * **Corporate Entities:** Company name, State, Zip Code
 * **Resolution Performance:** Company response, Timely response (Y/N), Consumer disputed (Y/N), Submitted via
 
+<img width="1193" height="300" alt="Screenshot 2026-05-22 at 5 25 00 PM" src="https://github.com/user-attachments/assets/29e4e2a8-a390-41f3-ad28-521439b0bd5e" />
+
+
 ### Data Cleaning Workflow
 Prior to building visualizations, the raw dataset underwent data cleaning and transformation inside a **PostgreSQL 18** environment via pgAdmin:
 1. **Text Standardization:** Leveraged `INITCAP()` to standardize mixed casing across fields like `Product` and `Company`.
