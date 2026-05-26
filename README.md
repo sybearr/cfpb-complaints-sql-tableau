@@ -36,7 +36,7 @@ Prior to building visualizations, the raw dataset underwent data cleaning and tr
 ## Executive Summary
 
 ### Overview of Findings
-Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily concentrated in credit reporting complaints, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate strong compliance with response deadlines (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the the biggest operational risk area in the retail consumer finance ecosystem.
+Over the 12-month period analyzed, consumer complaints reached a massive volume of 951.6K, heavily concentrated in credit reporting complaints, with the "Big Three" bureaus accounting for over 71.6% of all filings. While financial institutions demonstrate strong compliance with response deadlines (99.5% timely response rate), the overwhelmingly high rate of accounts closed with simple "explanations" over tangible relief underscores a potential gap in proactive consumer resolution. From a stakeholder perspective, these insights highlight that data integrity in credit reporting represents the biggest operational risk area in the retail consumer finance ecosystem.
 
 <img width="1354" height="984" alt="Screenshot 2026-05-25 at 3 50 31 PM" src="https://github.com/user-attachments/assets/ed7b55ac-d08a-4c3d-a2f3-a4d963754ea4" />
 
